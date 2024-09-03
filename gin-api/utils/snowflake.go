@@ -2,13 +2,13 @@ package utils
 
 import (
 	"fmt"
-	"github.com/bwmarrin/snowflake"
+	sf "github.com/bwmarrin/snowflake"
 	"time"
 )
 
 // 雪花算法生成用户id
 // 初始化全局node节点
-var node *snowflake.Node
+var node *sf.Node
 
 func init() {
 	var (
@@ -26,9 +26,9 @@ func init() {
 	}
 	machineID = 1
 	// 获取时间因子
-	snowflake.Epoch = st.UnixNano() / 1000000
-	node, err = snowflake.NewNode(machineID)
-
+	sf.Epoch = st.UnixNano() / 1000000
+	node, err = sf.NewNode(machineID)
+	return
 }
 
 func GenID() int64 {
