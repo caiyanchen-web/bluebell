@@ -9,5 +9,4 @@ func main() {
 
 	id := utils.GenID()
 	fmt.Println(id)
-
 }

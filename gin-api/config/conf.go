@@ -18,9 +18,10 @@ type config struct {
 
 // 系统配置
 type system struct {
-	Host string `yaml:"host"`
-	Port int    `yaml:"port"`
-	Env  string `yaml:"env"`
+	Host      string `yaml:"host"`
+	Port      int    `yaml:"port"`
+	Env       string `yaml:"env"`
+	MachineID int64  `yaml:"machineID"`
 }
 
 // logger日志配置
@@ -73,5 +74,8 @@ func init() {
 	if err != nil {
 		fmt.Println("换成日志输出")
 	}
-	err = viper.Unmarshal(Config)
+	err = viper.Unmarshal(&Config)
+	if err != nil {
+		fmt.Println("config Unmarshal failed")
+	}
 }

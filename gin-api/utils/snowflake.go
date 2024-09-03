@@ -2,6 +2,7 @@ package utils
 
 import (
 	"fmt"
+	"gin-api/config"
 	sf "github.com/bwmarrin/snowflake"
 	"time"
 )
@@ -24,7 +25,7 @@ func init() {
 	if err != nil {
 		fmt.Println("parse time error", err)
 	}
-	machineID = 1
+	machineID = config.Config.System.MachineID
 	// 获取时间因子
 	sf.Epoch = st.UnixNano() / 1000000
 	node, err = sf.NewNode(machineID)
