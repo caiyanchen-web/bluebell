@@ -1,12 +1,13 @@
 package main
 
 import (
-	"fmt"
+	"gin-api/global"
 	"gin-api/utils"
 )
 
 func main() {
+	global.Log = utils.InitLogger()
+	global.Log.Info("hello world")
+	global.Log.Error("parse time error")
 
-	id := utils.GenID()
-	fmt.Println(id)
 }

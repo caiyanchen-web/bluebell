@@ -2,7 +2,7 @@
 package config
 
 import (
-	"fmt"
+	"gin-api/global"
 	"github.com/spf13/viper"
 )
 
@@ -72,10 +72,10 @@ func init() {
 	viper.SetConfigFile("config.yaml")
 	err := viper.ReadInConfig()
 	if err != nil {
-		fmt.Println("换成日志输出")
+		global.Log.Error("config read failed", err)
 	}
 	err = viper.Unmarshal(&Config)
 	if err != nil {
-		fmt.Println("config Unmarshal failed")
+		global.Log.Error("config Unmarshal failed", err)
 	}
 }

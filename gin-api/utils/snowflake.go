@@ -1,8 +1,8 @@
 package utils
 
 import (
-	"fmt"
 	"gin-api/config"
+	"gin-api/global"
 	sf "github.com/bwmarrin/snowflake"
 	"time"
 )
@@ -23,7 +23,7 @@ func init() {
 	//st获取开始时间，年-月-日格式
 	st, err = time.Parse("2006-01-02", startTime)
 	if err != nil {
-		fmt.Println("parse time error", err)
+		global.Log.Error("parse time error", err)
 	}
 	machineID = config.Config.System.MachineID
 	// 获取时间因子
